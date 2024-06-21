@@ -18,8 +18,8 @@ class Server:
 
         while True:
             client_socket, client_address = self.server_socket.accept()
-            client_handler = client_handler(client_socket, client_address)
-            client_thread = threading.Thread(target=client_handler.handle)
+            client_handler_val = client_handler(client_socket, client_address)
+            client_thread = threading.Thread(target=client_handler_val.handle)
             client_thread.start()
 
 if __name__ == "__main__":
