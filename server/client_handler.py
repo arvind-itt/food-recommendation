@@ -5,7 +5,7 @@ from admin_service import AdminService
 from authentication import AuthService
 from menu_item import MenuItem
 
-class ClientHandler:
+class client_handler:
     def __init__(self, client_socket, client_address):
         self.client_socket = client_socket
         self.client_address = client_address

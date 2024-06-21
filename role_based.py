@@ -1,4 +1,4 @@
-from admin_controller import AdminController
+from admin_handler import admin_handler
 
 class RoleBasedMenu:
 
@@ -16,19 +16,19 @@ What do you want to do.....
                                 
 Enter your choice: '''))
             if(user_choice == 1):
-                admin_controller = AdminController()
+                admin_controller = admin_handler()
                 item_detail_to_send_to_server = admin_controller.add_menu_item()
                 return item_detail_to_send_to_server
             elif(user_choice == 2):
-                admin_controller = AdminController()
+                admin_controller = admin_handler()
                 item_detail_to_send_to_server = admin_controller.update_item_availability()
                 return item_detail_to_send_to_server
             elif(user_choice == 3):
-                admin_controller = AdminController()
+                admin_controller = admin_handler()
                 item_detail_to_send_to_server = admin_controller.delete_item_from_menu()
                 return item_detail_to_send_to_server
             elif(user_choice == 4):
-                admin_controller = AdminController()
+                admin_controller = admin_handler()
                 item_detail_to_send_to_server = admin_controller.fetch_complete_menu()
                 return item_detail_to_send_to_server
             elif(user_choice == 5):

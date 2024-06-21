@@ -2,7 +2,7 @@ import socket
 import threading
 import sys
 sys.path.append("..")
-from client_handler import ClientHandler
+from client_handler import client_handler
 from db_config import SERVER_IP, SERVER_PORT
 
 class Server:
@@ -18,7 +18,7 @@ class Server:
 
         while True:
             client_socket, client_address = self.server_socket.accept()
-            client_handler = ClientHandler(client_socket, client_address)
+            client_handler = client_handler(client_socket, client_address)
             client_thread = threading.Thread(target=client_handler.handle)
             client_thread.start()
 

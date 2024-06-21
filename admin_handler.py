@@ -2,7 +2,7 @@ from db_connection import DatabaseConnection
 from menu_item import MenuItem
 import json
 
-class AdminController:
+class admin_handler:
     def add_menu_item(self):
         action = "ADD_MENU_ITEM"
         item_name = input("\nEnter item name: ")
