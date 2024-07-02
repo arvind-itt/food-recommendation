@@ -1,5 +1,5 @@
-from db_connection import DatabaseConnection
-from menu_item import MenuItem
+from database.db_connection import DatabaseConnection
+from menu.menu_item import MenuItem
 import json
 
 class admin_handler:

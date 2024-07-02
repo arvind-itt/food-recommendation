@@ -1,5 +1,5 @@
-from db_config import DB_CONFIG
-from db_connection import DatabaseConnection
+from database.db_config import DB_CONFIG
+from database.db_connection import DatabaseConnection
 
 class AdminService:
 

@@ -1,6 +1,6 @@
 import socket
-from db_config import SERVER_IP, SERVER_PORT, BUFFER_SIZE
-from role_based import RoleBasedMenu
+from database.db_config import SERVER_IP, SERVER_PORT, BUFFER_SIZE
+from roles.role_based import RoleBasedMenu
 
 class Client:
     def __init__(self, server_ip, server_port):

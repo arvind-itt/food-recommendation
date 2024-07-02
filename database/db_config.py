@@ -5,6 +5,7 @@ DB_CONFIG = {
     'password': 'Arvind@2001'
 }
 
-SERVER_IP = '127.0.0.1'
+SERVER_IP = 'localhost'
 SERVER_PORT = 12345
 BUFFER_SIZE = 1024
+

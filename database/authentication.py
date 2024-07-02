@@ -1,5 +1,5 @@
-from db_connection import DatabaseConnection
-from db_config import *
+from database.db_connection import DatabaseConnection
+from database.db_config import *
 
 class AuthService:
     def login(self, email):

@@ -1,5 +1,5 @@
-from db_connection import DatabaseConnection
-from db_config import *
+from database.db_connection import DatabaseConnection
+from database.db_config import *
 
 class MenuItem:
     def __init__(self, item_id=None, item_name=None, price=None, availability_status=None, item_category=None):
@@ -23,6 +23,14 @@ class MenuItem:
         db = DatabaseConnection(DB_CONFIG)
         db.connect()
         query = "SELECT * FROM menu;"
+        menu_items = db.fetch_all(query)
+        db.disconnect()
+        return menu_items
+
+    def get_item_detail_by_id(self,item_id):
+        db = DatabaseConnection(DB_CONFIG)
+        db.connect()
+        query = f"SELECT * FROM menu_item where item_id in ({item_id});"
         menu_items = db.fetch_all(query)
         db.disconnect()
         return menu_items
