@@ -2,50 +2,56 @@ from database.db_config import DB_CONFIG
 from database.db_connection import DatabaseConnection
 
 class AdminService:
+    def __init__(self):
+        self.db = DatabaseConnection(DB_CONFIG)
+    
+    def connect_db(self):
+        self.db.connect()
+    
+    def disconnect_db(self):
+        self.db.disconnect()
 
-    def add_menu_item(self,data):
+    def add_menu_item(self, data):
         try:
-            db = DatabaseConnection(DB_CONFIG)
-            db.connect()
-            query = '''
-            insert into menu (item_name, price, availability_status, item_category) values (%s,%s,%s,%s);
+            self.connect_db()
+            insert_query = '''
+            INSERT INTO menu (item_name, price, availability_status, item_category) VALUES (%s, %s, %s, %s);
             '''
-            values = (data['item_name'], data['price'], data['availability_status'], data['item_category'])
-            db.execute_query(query, values)
-            db.disconnect()
-            status = "Item added successfully"
-        except Exception as e:
-            status = "Item not added"
-        return status
+            params = (data['item_name'], data['price'], data['availability_status'], data['item_category'])
+            self.db.execute_query(insert_query, params)
+            self.disconnect_db()
+            response = "Item has been added successfully."
+        except Exception as error:
+            print(error)
+            response = "Failed to add item."
+        return response
     
-    def update_item_availability(self,data):
+    def update_item_availability(self, data):
         try:
-            db = DatabaseConnection(DB_CONFIG)
-            db.connect()
-            query = '''
-            update menu set availability_status = %s where item_id = %s;
+            self.connect_db()
+            update_query = '''
+            UPDATE menu SET availability_status = %s WHERE item_id = %s;
             '''
-            values = (data['availability_status'], data['item_id'])
-            db.execute_query(query, values)
-            db.disconnect()
-            status = "Availability updated successfully"
-        except Exception as e:
-            print(e)
-            status = "Error in updating availability"
-        return status
+            params = (data['availability_status'], data['item_id'])
+            self.db.execute_query(update_query, params)
+            self.disconnect_db()
+            response = "Availability status updated successfully."
+        except Exception as error:
+            print(error)
+            response = "Failed to update availability."
+        return response
     
-    def delete_item_from_menu(self,data):
+    def delete_item_from_menu(self, data):
         try:
-            db = DatabaseConnection(DB_CONFIG)
-            db.connect()
-            query = '''
-            delete from menu where item_id = %s;
+            self.connect_db()
+            delete_query = '''
+            DELETE FROM menu WHERE item_id = %s;
             '''
-            values = (data['item_id'],)
-            db.execute_query(query, values)
-            db.disconnect()
-            status = "Item deleted successfully"
-        except Exception as e:
-            print(e)
-            status = "Error in deleting item"
-        return status
+            params = (data['item_id'],)
+            self.db.execute_query(delete_query, params)
+            self.disconnect_db()
+            response = "Item deleted successfully."
+        except Exception as error:
+            print(error)
+            response = "Failed to delete item."
+        return response
