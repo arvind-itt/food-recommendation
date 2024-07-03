@@ -1,5 +1,5 @@
-from db_connection import DatabaseConnection
-from db_config import *
+from database.db_connection import DatabaseConnection
+from database.db_config import *
 
 class Role:
     def __init__(self, role_id, role_name):
@@ -24,4 +24,3 @@ class Role:
         db.disconnect()
         role_objects = [cls(role[0], role[1]) for role in roles]
         return role_objects
-

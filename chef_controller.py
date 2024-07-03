@@ -1,7 +1,7 @@
 import json
 from datetime import datetime, timedelta
 
-class chefHandler:
+class ChefController:
     
     def get_recommendation(self):
         action = "GET_RECOMMENDATION"

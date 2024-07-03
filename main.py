@@ -1,6 +1,6 @@
-from socket_connection import Client
+from client import Client
 from database.db_config import SERVER_IP, SERVER_PORT
-from roles.role_based import RoleBasedMenu
+from role_based_menu import RoleBasedMenu
 import json
 
 def main():

@@ -1,6 +1,6 @@
-from admin.admin_controller import AdminController
-from chef.chef_controller import chefHandler
-from employee.employee_controller import employeeHandler
+from admin_controller import AdminController
+from chef_controller import ChefController
+from employee_controller import EmployeeController
 
 class RoleBasedMenu:
 
@@ -52,19 +52,19 @@ What do you want to do.....
                                 
 Enter your choice: '''))
             if(user_choice == 1):
-                chef_controller = chefHandler()
+                chef_controller = ChefController()
                 information_need_to_send_to_server = chef_controller.get_recommendation()
                 return information_need_to_send_to_server
             elif(user_choice == 2):
-                chef_controller = chefHandler()
+                chef_controller = ChefController()
                 information_need_to_send_to_server = chef_controller.roll_out_menu()
                 return information_need_to_send_to_server
             elif(user_choice == 3):
-                chef_controller = chefHandler()
+                chef_controller = ChefController()
                 information_need_to_send_to_server = chef_controller.view_voted_items()
                 return information_need_to_send_to_server
             elif(user_choice == 4):
-                chef_controller = chefHandler()
+                chef_controller = ChefController()
                 information_need_to_send_to_server = chef_controller.fetch_complete_menu()
                 return information_need_to_send_to_server
             elif(user_choice == 5):
@@ -86,19 +86,19 @@ What do you want to do.....
                                 
 Enter your choice: '''))
             if(user_choice == 1):
-                employee_controller = employeeHandler()
+                employee_controller = EmployeeController()
                 information_need_to_send_to_server = employee_controller.view_next_day_menu()
                 return information_need_to_send_to_server
             elif(user_choice == 2):
-                employee_controller = employeeHandler()
+                employee_controller = EmployeeController()
                 information_need_to_send_to_server = employee_controller.provide_feedback(user_id)
                 return information_need_to_send_to_server
             elif(user_choice == 3):
-                employee_controller = employeeHandler()
+                employee_controller = EmployeeController()
                 information_need_to_send_to_server = employee_controller.vote_for_food_item(user_id)
                 return information_need_to_send_to_server
             elif(user_choice == 4):
-                employee_controller = employeeHandler()
+                employee_controller = EmployeeController()
                 information_need_to_send_to_server = employee_controller.fetch_complete_menu()
                 return information_need_to_send_to_server
             elif(user_choice == 5):

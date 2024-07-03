@@ -1,7 +1,9 @@
 import json
 import sys
+from chef_service import ChefService
+from employee_service import EmployeeService
 sys.path.append("..")
-from admin.admin_service import AdminService
+from admin_service import AdminService
 from authentication import AuthService
 from menu_item import MenuItem
 

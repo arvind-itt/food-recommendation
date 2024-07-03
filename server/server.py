@@ -2,8 +2,8 @@ import socket
 import threading
 import sys
 sys.path.append("..")
-from client_handler import client_handler
-from db_config import SERVER_IP, SERVER_PORT
+from client_handler import ClientHandler
+from database.db_config import SERVER_IP, SERVER_PORT
 
 class Server:
     def __init__(self, ip, port):
@@ -18,8 +18,8 @@ class Server:
 
         while True:
             client_socket, client_address = self.server_socket.accept()
-            client_handler_val = client_handler(client_socket, client_address)
-            client_thread = threading.Thread(target=client_handler_val.handle)
+            client_handler = ClientHandler(client_socket, client_address)
+            client_thread = threading.Thread(target=client_handler.handle)
             client_thread.start()
 
 if __name__ == "__main__":

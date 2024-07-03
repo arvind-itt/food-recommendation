@@ -1,6 +1,7 @@
+
 import json
 
-class employeeHandler:
+class EmployeeController:
     
     def fetch_complete_menu(self):
         action = "FETCH_COMPLETE_MENU"
