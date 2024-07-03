@@ -1,11 +1,14 @@
 class SentimentAnalyzer:
-    word_weights = {
+    positive_words = {
         "good": 1, "great": 2, "awesome": 3, "fantastic": 4, "amazing": 3, "love": 2, "like": 1, "liked": 2, "happy": 2, "wonderful": 3,
         "excellent": 3, "positive": 2, "joy": 2, "pleasure": 2, "delight": 2, "satisfying": 2, "best": 3, "beautiful": 2, "brilliant": 3,
         "charming": 2, "cheerful": 2, "delicious": 3, "elegant": 2, "enjoyable": 2, "fabulous": 3, "friendly": 2, "glorious": 3, "graceful": 2,
         "honest": 2, "impressive": 3, "kind": 2, "lovely": 2, "magnificent": 4, "marvelous": 3, "nice": 1, "outstanding": 4, "peaceful": 2,
         "perfect": 3, "pleasant": 2, "remarkable": 3, "spectacular": 4, "splendid": 3, "superb": 3, "terrific": 3, "thrilling": 3, "top": 2,
         "unique": 2, "valuable": 3, "vibrant": 2, "vivacious": 2, "wonder": 2, "wow": 3, "yes": 1, "zealous": 2, "can't complain": 2, "won't disappoint": 2,
+    }
+    
+    negative_words = {
         "bad": -1, "terrible": -2, "awful": -3, "horrible": -4, "hate": -3, "dislike": -1, "sad": -2, "poor": -1, "worst": -3, "negative": -2,
         "oily": -1, "boring": -2, "useless": -3, "disappointed": -2, "annoyed": -2, "unsatisfied": -2, "mediocre": -1, "ridiculous": -3,
         "abysmal": -3, "appalling": -3, "atrocious": -3, "cheap": -1, "crappy": -2, "crummy": -2, "dreadful": -3, "gross": -2, "horrendous": -4,
@@ -18,6 +21,7 @@ class SentimentAnalyzer:
         "villainous": -3, "violent": -2, "vulgar": -2, "waste": -2, "wasted": -2, "wretched": -3, "don't": -2, "can't": -1, "won't": -2, "soggy": -1,
         "salty": -1, "bitter": -1, "sour": -1, "bland": -1, "bitterness": -1, "sourness": -1, "blandness": -1,
     }
+    
     punctuation = '''!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~'''
 
     @classmethod
@@ -28,11 +32,15 @@ class SentimentAnalyzer:
         sentiment_score = 0
 
         for word in words:
-            if word in cls.word_weights:
-                sentiment_score += cls.word_weights[word]
+            if word in cls.positive_words:
+                sentiment_score += cls.positive_words[word]
+            elif word in cls.negative_words:
+                sentiment_score += cls.negative_words[word]
 
         for i, word in enumerate(words):
-            if word == "not" and i + 1 < len(words) and words[i + 1] in cls.word_weights:
-                sentiment_score -= 2 * cls.word_weights[words[i + 1]]
+            if word == "not" and i + 1 < len(words) and words[i + 1] in cls.positive_words:
+                sentiment_score -= 2 * cls.positive_words[words[i + 1]]
+            elif word == "not" and i + 1 < len(words) and words[i + 1] in cls.negative_words:
+                sentiment_score -= 2 * cls.negative_words[words[i + 1]]
 
         return sentiment_score

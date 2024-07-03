@@ -18,7 +18,7 @@ class EmployeeService:
         values = (data['user_id'], data['item_id'],data['comment'],data['rating'],sentiment_score,feedback_date)
         db.execute_query(query, values)
         db.disconnect()
-        status = "Item added successfully"
+        status = "Feedback added successfully"
         return status
     
     def view_next_day_menu(self):
